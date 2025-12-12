@@ -7,10 +7,13 @@ export type CliOptions = {
   help: boolean;
 };
 
-export const HELP_TEXT = `terminal-devtool (Bun + TS)
+export const HELP_TEXT = `termdev (Bun + TS)
 
 Usage:
-  bun run start -- [options]
+  termdev [options]
+
+  # or inside this repo:
+  bun run termdev -- [options]
 
 Options:
   --host <host>         Chrome remote debugging host (default: 127.0.0.1)

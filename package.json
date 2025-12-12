@@ -1,9 +1,13 @@
 {
-  "name": "terminal-devtool",
+  "name": "termdev",
   "module": "index.ts",
   "type": "module",
   "private": true,
+  "bin": {
+    "termdev": "./bin/termdev.ts"
+  },
   "scripts": {
+    "termdev": "bun ./index.ts",
     "dev": "bun --hot ./index.ts",
     "start": "bun ./index.ts",
     "test": "bun test",
