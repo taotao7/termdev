@@ -26,6 +26,12 @@ Verify CDP is reachable:
 curl http://127.0.0.1:9222/json/version
 ```
 
+## Example
+
+https://github.com/user-attachments/assets/f2506fe4-7151-4920-bd2a-54d0b024e9ba
+
+
+
 ## Install
 
 ```bash
