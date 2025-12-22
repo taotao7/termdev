@@ -37,6 +37,8 @@ npm install -g @taotao7/termdev
 
 # or develop locally
 bun install
+# or with npm
+npm install
 ```
 
 ## Run
@@ -45,8 +47,12 @@ bun install
 termdev
 
 # or inside this repo:
-bun run termdev
+bun run termdev        # Using Bun
+npm run termdev         # Using Node.js (requires tsx)
+npm run termdev:bun     # Explicitly use Bun
 ```
+
+**Note**: This tool supports both Bun and Node.js runtime. When using Node.js, `tsx` is required (automatically installed as a dev dependency).
 
 Common options:
 

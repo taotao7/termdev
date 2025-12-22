@@ -1,6 +1,6 @@
 {
   "name": "@taotao7/termdev",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Terminal DevTools for Chrome DevTools Protocol (CDP)",
   "module": "index.ts",
   "type": "module",
@@ -14,14 +14,17 @@
     "tsconfig.json"
   ],
   "bin": {
-    "termdev": "./bin/termdev.ts"
+    "termdev": "./bin/termdev.js"
   },
   "scripts": {
-    "termdev": "bun ./index.ts",
-    "dev": "bun --hot ./index.ts",
-    "start": "bun ./index.ts",
+    "termdev": "tsx ./index.ts",
+    "termdev:bun": "bun ./index.ts",
+    "dev": "tsx watch ./index.ts",
+    "dev:bun": "bun --hot ./index.ts",
+    "start": "tsx ./index.ts",
+    "start:bun": "bun ./index.ts",
     "test": "bun test",
-    "typecheck": "bunx tsc --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "chrome-remote-interface": "^0.33.2",
@@ -32,10 +35,13 @@
   "devDependencies": {
     "@types/bun": "latest",
     "@types/chrome-remote-interface": "^0.31.14",
+    "@types/node": "^20.0.0",
     "@types/react": "^18.3.12",
+    "tsx": "^4.7.0",
     "typescript": "^5.8.3"
   },
   "peerDependencies": {
     "typescript": "^5"
-  }
+  },
+  "packageManager": "pnpm@10.6.1+sha512.40ee09af407fa9fbb5fbfb8e1cb40fbb74c0af0c3e10e9224d7b53c7658528615b2c92450e74cfad91e3a2dcafe3ce4050d80bda71d757756d2ce2b66213e9a3"
 }

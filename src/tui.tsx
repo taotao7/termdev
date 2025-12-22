@@ -325,41 +325,54 @@ function serializeBodyOnly(node: LogNode): string[] {
 async function copyToClipboard(text: string): Promise<boolean> {
   const trimmed = text.replace(/\s+$/g, "") + "\n";
   try {
-    // macOS
-    if (process.platform === "darwin" && Bun.which("pbcopy")) {
-      const proc = Bun.spawn(["pbcopy"], {
-        stdin: "pipe",
-        stdout: "ignore",
-        stderr: "ignore",
+    // Use dynamic import to support both Bun and Node.js
+    const { spawn } = await import("child_process");
+    type ChildProcess = Awaited<ReturnType<typeof spawn>>;
+
+    // Helper to run clipboard command
+    const runClipboard = (args: string[]): Promise<boolean> => {
+      return new Promise((resolve) => {
+        const cmd = args[0];
+        if (!cmd) {
+          resolve(false);
+          return;
+        }
+
+        const proc = spawn(cmd, args.slice(1), {
+          stdio: ["pipe", "ignore", "ignore"],
+        }) as ChildProcess & { stdin: NodeJS.WritableStream };
+
+        if (proc.stdin) {
+          proc.stdin.write(trimmed);
+          proc.stdin.end();
+        }
+
+        proc.on("close", (code: number | null) => {
+          resolve(code === 0);
+        });
+
+        proc.on("error", () => {
+          resolve(false);
+        });
       });
-      await proc.stdin.write(trimmed);
-      await proc.stdin.end();
-      await proc.exited;
-      return proc.exitCode === 0;
+    };
+
+    // Try commands in order, first successful one wins
+    // macOS
+    if (process.platform === "darwin") {
+      const result = await runClipboard(["pbcopy"]);
+      if (result) return true;
     }
     // Linux (best-effort)
-    if (Bun.which("wl-copy")) {
-      const proc = Bun.spawn(["wl-copy"], {
-        stdin: "pipe",
-        stdout: "ignore",
-        stderr: "ignore",
-      });
-      await proc.stdin.write(trimmed);
-      await proc.stdin.end();
-      await proc.exited;
-      return proc.exitCode === 0;
-    }
-    if (Bun.which("xclip")) {
-      const proc = Bun.spawn(["xclip", "-selection", "clipboard"], {
-        stdin: "pipe",
-        stdout: "ignore",
-        stderr: "ignore",
-      });
-      await proc.stdin.write(trimmed);
-      await proc.stdin.end();
-      await proc.exited;
-      return proc.exitCode === 0;
-    }
+    const wlResult = await runClipboard(["wl-copy"]);
+    if (wlResult) return true;
+
+    const xclipResult = await runClipboard([
+      "xclip",
+      "-selection",
+      "clipboard",
+    ]);
+    if (xclipResult) return true;
   } catch {
     // ignore
   }

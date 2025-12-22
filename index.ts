@@ -1,3 +1,5 @@
 import { run } from "./src/main.ts";
 
-await run(Bun.argv.slice(2));
+// Support both Bun and Node.js
+const argv = typeof Bun !== "undefined" ? Bun.argv : process.argv;
+await run(argv.slice(2));
