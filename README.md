@@ -41,18 +41,33 @@ bun install
 npm install
 ```
 
+## Build
+
+This project uses Bun's bundler to create a single executable file that works with both Node.js and Bun:
+
+```bash
+bun run build
+```
+
+The build script uses `target: "node"` to ensure compatibility with both runtimes. The bundled file is output to `bin/termdev.js` and can be run directly with either `node` or `bun`.
+
 ## Run
 
 ```bash
+# After installation (uses bundled file)
 termdev
 
-# or inside this repo:
-bun run termdev        # Using Bun
-npm run termdev         # Using Node.js (requires tsx)
-npm run termdev:bun     # Explicitly use Bun
+# or inside this repo (development mode):
+bun run termdev        # Using Bun (runs source directly)
+npm run termdev         # Using Node.js with tsx (runs source directly)
+npm run termdev:bun     # Explicitly use Bun (runs source directly)
+
+# Run the bundled file directly:
+node bin/termdev.js     # Works with Node.js
+bun bin/termdev.js      # Also works with Bun
 ```
 
-**Note**: This tool supports both Bun and Node.js runtime. When using Node.js, `tsx` is required (automatically installed as a dev dependency).
+**Note**: The bundled `bin/termdev.js` file works with both Node.js and Bun runtime. For development, the source TypeScript files are run directly using `tsx` (Node.js) or `bun` (Bun).
 
 Common options:
 

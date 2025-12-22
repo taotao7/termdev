@@ -1,5 +1,5 @@
 import { build } from "bun";
-import { writeFile } from "fs/promises";
+import { writeFile, chmod } from "fs/promises";
 import { readFile } from "fs/promises";
 
 // Build the bin entry point - this will be the main executable
@@ -45,7 +45,9 @@ if (outputFile) {
     // Add new shebang
     content = shebang + content;
   }
-  await writeFile(outputFile, content, { mode: 0o755 });
+  await writeFile(outputFile, content);
+  // Ensure executable permissions
+  await chmod(outputFile, 0o755);
 }
 
 console.log("Build completed successfully!");
