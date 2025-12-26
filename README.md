@@ -6,6 +6,8 @@ A Bun + TypeScript **Chrome DevTools Protocol (CDP)** client with a terminal UI 
 - **Network**: request list with expandable request/response details (JSON responses are automatically formatted)
 - **Eval**: run JavaScript in the attached page from the terminal
 
+<img width="1740" height="938" alt="screenshot-20251226-120825" src="https://github.com/user-attachments/assets/777131bb-c4e0-49b1-90d7-31b36a325e0a" />
+
 ## Prerequisites
 
 - Google Chrome (or Chromium-based browser)
