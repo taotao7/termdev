@@ -2185,9 +2185,7 @@ var getTargetColor = (type, selected, attached) => {
   }
 };
 function LogoScreen({
-  onDismiss,
-  rows,
-  columns
+  onDismiss
 }) {
   useInput(() => {
     onDismiss();
@@ -2211,44 +2209,28 @@ function LogoScreen({
   });
   const subtitleColored = dist_default(["#4ECDC4", "#45B7D1", "#96CEB4"])(LOGO_SUBTITLE);
   const hintColored = dist_default(["#888888", "#aaaaaa", "#888888"])(LOGO_HINT);
-  const totalHeight = logoLines.length + 4;
-  const topPadding = Math.max(0, Math.floor((rows - totalHeight) / 2));
-  const logoWidth = Math.max(...logoLines.map((l) => l.length));
-  const leftPadding = Math.max(0, Math.floor((columns - logoWidth) / 2));
-  const subtitlePadding = Math.max(0, Math.floor((columns - LOGO_SUBTITLE.length) / 2));
-  const hintPadding = Math.max(0, Math.floor((columns - LOGO_HINT.length) / 2));
   return /* @__PURE__ */ jsxDEV(Box, {
     flexDirection: "column",
     width: "100%",
     height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
     children: [
-      Array.from({ length: topPadding }).map((_, i) => /* @__PURE__ */ jsxDEV(Text, {
-        children: " "
-      }, `pad-${i}`, false, undefined, this)),
       coloredLines.map((line, i) => /* @__PURE__ */ jsxDEV(Text, {
-        children: [
-          " ".repeat(leftPadding),
-          line
-        ]
-      }, `logo-${i}`, true, undefined, this)),
+        children: line
+      }, `logo-${i}`, false, undefined, this)),
       /* @__PURE__ */ jsxDEV(Text, {
         children: " "
       }, undefined, false, undefined, this),
       /* @__PURE__ */ jsxDEV(Text, {
-        children: [
-          " ".repeat(subtitlePadding),
-          subtitleColored
-        ]
-      }, undefined, true, undefined, this),
+        children: subtitleColored
+      }, undefined, false, undefined, this),
       /* @__PURE__ */ jsxDEV(Text, {
         children: " "
       }, undefined, false, undefined, this),
       /* @__PURE__ */ jsxDEV(Text, {
-        children: [
-          " ".repeat(hintPadding),
-          hintColored
-        ]
-      }, undefined, true, undefined, this)
+        children: hintColored
+      }, undefined, false, undefined, this)
     ]
   }, undefined, true, undefined, this);
 }
@@ -3799,9 +3781,7 @@ function App({ opts }) {
   }, [activeFlat, activeScrollTop, visibleLogLines]);
   if (showLogo) {
     return /* @__PURE__ */ jsxDEV(LogoScreen, {
-      onDismiss: () => setShowLogo(false),
-      rows: safeRows,
-      columns
+      onDismiss: () => setShowLogo(false)
     }, undefined, false, undefined, this);
   }
   const headerTitle = headerGradient(`${ICONS.logo} TermDev`);
@@ -4210,4 +4190,4 @@ async function run(argv) {
 var argv = typeof Bun !== "undefined" ? Bun.argv : process.argv;
 await run(argv.slice(2));
 
-//# debugId=E24B0162139002FA64756E2164756E21
+//# debugId=808A6A841733DA0364756E2164756E21

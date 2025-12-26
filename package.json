@@ -1,6 +1,6 @@
 {
   "name": "@taotao7/termdev",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Terminal DevTools for Chrome DevTools Protocol (CDP)",
   "module": "index.ts",
   "type": "module",

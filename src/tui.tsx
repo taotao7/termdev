@@ -141,12 +141,8 @@ const getStatusColor = (status: number | undefined): string => {
 // Logo component
 function LogoScreen({
   onDismiss,
-  rows,
-  columns,
 }: {
   onDismiss: () => void;
-  rows: number;
-  columns: number;
 }) {
   useInput(() => {
     onDismiss();
@@ -176,47 +172,26 @@ function LogoScreen({
   );
   const hintColored = gradient(["#888888", "#aaaaaa", "#888888"])(LOGO_HINT);
 
-  // Center vertically
-  const totalHeight = logoLines.length + 4; // logo + subtitle + hint + spacing
-  const topPadding = Math.max(0, Math.floor((rows - totalHeight) / 2));
-
-  // Center horizontally
-  const logoWidth = Math.max(...logoLines.map((l) => l.length));
-  const leftPadding = Math.max(0, Math.floor((columns - logoWidth) / 2));
-  const subtitlePadding = Math.max(
-    0,
-    Math.floor((columns - LOGO_SUBTITLE.length) / 2)
-  );
-  const hintPadding = Math.max(0, Math.floor((columns - LOGO_HINT.length) / 2));
-
   return (
-    <Box flexDirection="column" width="100%" height="100%">
-      {/* Top padding */}
-      {Array.from({ length: topPadding }).map((_, i) => (
-        <Text key={`pad-${i}`}> </Text>
-      ))}
-
+    <Box
+      flexDirection="column"
+      width="100%"
+      height="100%"
+      justifyContent="center"
+      alignItems="center"
+    >
       {/* Logo lines */}
       {coloredLines.map((line, i) => (
-        <Text key={`logo-${i}`}>
-          {" ".repeat(leftPadding)}
-          {line}
-        </Text>
+        <Text key={`logo-${i}`}>{line}</Text>
       ))}
 
       {/* Subtitle */}
       <Text> </Text>
-      <Text>
-        {" ".repeat(subtitlePadding)}
-        {subtitleColored}
-      </Text>
+      <Text>{subtitleColored}</Text>
 
       {/* Hint */}
       <Text> </Text>
-      <Text>
-        {" ".repeat(hintPadding)}
-        {hintColored}
-      </Text>
+      <Text>{hintColored}</Text>
     </Box>
   );
 }
@@ -2223,8 +2198,6 @@ function App({ opts }: AppProps) {
     return (
       <LogoScreen
         onDismiss={() => setShowLogo(false)}
-        rows={safeRows}
-        columns={columns}
       />
     );
   }
