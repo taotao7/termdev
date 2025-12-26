@@ -29,49 +29,49 @@ const LOG_MAX_LINES = 5000;
 // ═══════════════════════════════════════════════════════════════════════════
 const ICONS = {
   // UI Elements
-  logo: "\ueb8e",        // nf-cod-terminal
-  connected: "\uea71",   // nf-cod-circle_filled
+  logo: "\ueb8e", // nf-cod-terminal
+  connected: "\uea71", // nf-cod-circle_filled
   disconnected: "\uea72", // nf-cod-circle_outline
-  bullet: "\ueab6",      // nf-cod-chevron_right
-  expand: "\ueab4",      // nf-cod-chevron_down
-  collapse: "\ueab6",    // nf-cod-chevron_right
-  star: "\ueb59",        // nf-cod-star_full
-  
+  bullet: "\ueab6", // nf-cod-chevron_right
+  expand: "\ueab4", // nf-cod-chevron_down
+  collapse: "\ueab6", // nf-cod-chevron_right
+  star: "\ueb59", // nf-cod-star_full
+
   // Targets
-  page: "\ueb01",        // nf-cod-globe
-  file: "\ueaf4",        // nf-cod-file
-  gear: "\ueb51",        // nf-cod-settings_gear (gear)
-  window: "\ueb14",      // nf-cod-window
-  mobile: "\uea8a",      // nf-cod-device_mobile
-  worker: "\ueb36",      // nf-cod-person
-  link: "\ueb15",        // nf-cod-link
-  plug: "\ueb39",        // nf-cod-plug
-  
+  page: "\ueb01", // nf-cod-globe
+  file: "\ueaf4", // nf-cod-file
+  gear: "\ueb51", // nf-cod-settings_gear (gear)
+  window: "\ueb14", // nf-cod-window
+  mobile: "\uea8a", // nf-cod-device_mobile
+  worker: "\ueb36", // nf-cod-person
+  link: "\ueb15", // nf-cod-link
+  plug: "\ueb39", // nf-cod-plug
+
   // Actions
-  search: "\uea6d",      // nf-cod-search
-  zap: "\ueb6c",         // nf-cod-zap
-  list: "\ueb85",        // nf-cod-list_flat
-  network: "\uf484",     // nf-md-web
-  
+  search: "\uea6d", // nf-cod-search
+  zap: "\ueb6c", // nf-cod-zap
+  list: "\ueb85", // nf-cod-list_flat
+  network: "\uf484", // nf-md-web
+
   // Status
-  check: "\ueab2",       // nf-cod-check
-  error: "\ueae2",       // nf-cod-error
-  warning: "\uea6c",     // nf-cod-warning
-  info: "\uea74",        // nf-cod-info
+  check: "\ueab2", // nf-cod-check
+  error: "\ueae2", // nf-cod-error
+  warning: "\uea6c", // nf-cod-warning
+  info: "\uea74", // nf-cod-info
 } as const;
 
 // ASCII Art Logo with rainbow gradient
 const LOGO_ART = `
-╔════════════════════════════════════════════════════════════════╗
-║                                                                ║
-║   ████████╗███████╗██████╗ ███╗   ███╗██████╗ ███████╗██╗   ██╗║
-║   ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██╔══██╗██╔════╝██║   ██║║
-║      ██║   █████╗  ██████╔╝██╔████╔██║██║  ██║█████╗  ██║   ██║║
-║      ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║  ██║██╔══╝  ╚██╗ ██╔╝║
-║      ██║   ███████╗██║  ██║██║ ╚═╝ ██║██████╔╝███████╗ ╚████╔╝ ║
-║      ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═════╝ ╚══════╝  ╚═══╝  ║
-║                                                                ║
-╚════════════════════════════════════════════════════════════════╝
+╔═══════════════════════════════════════════════════════════════════╗
+║                                                                   ║ 
+║   ████████╗███████╗██████╗ ███╗   ███╗██████╗ ███████╗██╗   ██╗   ║
+║   ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║██╔══██╗██╔════╝██║   ██║   ║
+║      ██║   █████╗  ██████╔╝██╔████╔██║██║  ██║█████╗  ██║   ██║   ║
+║      ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║██║  ██║██╔══╝  ╚██╗ ██╔╝   ║
+║      ██║   ███████╗██║  ██║██║ ╚═╝ ██║██████╔╝███████╗ ╚████╔╝    ║
+║      ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═════╝ ╚══════╝  ╚═══╝     ║
+║                                                                   ║
+╚═══════════════════════════════════════════════════════════════════╝
 `;
 
 const LOGO_SUBTITLE = " Terminal DevTools for Chrome DevTools Protocol";
@@ -110,7 +110,7 @@ const getTargetIcon = (type: string): string => {
 const getTargetColor = (
   type: string,
   selected: boolean,
-  attached: boolean
+  attached: boolean,
 ): string | undefined => {
   if (attached) return "green";
   if (selected) return "cyan";
@@ -139,11 +139,7 @@ const getStatusColor = (status: number | undefined): string => {
 };
 
 // Logo component
-function LogoScreen({
-  onDismiss,
-}: {
-  onDismiss: () => void;
-}) {
+function LogoScreen({ onDismiss }: { onDismiss: () => void }) {
   useInput(() => {
     onDismiss();
   });
@@ -157,7 +153,7 @@ function LogoScreen({
     "#96CEB4",
     "#DDA0DD",
   ];
-  
+
   const coloredLines = logoLines.map((line, i) => {
     // Apply different gradient colors to each line for rainbow effect
     const c1 = colors[i % colors.length]!;
@@ -168,7 +164,7 @@ function LogoScreen({
   });
 
   const subtitleColored = gradient(["#4ECDC4", "#45B7D1", "#96CEB4"])(
-    LOGO_SUBTITLE
+    LOGO_SUBTITLE,
   );
   const hintColored = gradient(["#888888", "#aaaaaa", "#888888"])(LOGO_HINT);
 
@@ -289,7 +285,7 @@ function tryPrettifyJson(body: string): { formatted: string; isJson: boolean } {
 
 function formatResponseBody(
   body: string,
-  base64Encoded: boolean
+  base64Encoded: boolean,
 ): { lines: string[]; typeHint: string } {
   if (base64Encoded) {
     // For base64 data, show first few chars
@@ -338,20 +334,20 @@ function classifyLogLine(line: string): { color?: string; dim?: boolean } {
 }
 
 function isObjectExpandable(
-  obj: RemoteObject | undefined
+  obj: RemoteObject | undefined,
 ): obj is RemoteObject & { objectId: string } {
   return Boolean(
     obj &&
       typeof obj === "object" &&
       typeof (obj as any).objectId === "string" &&
-      (obj as any).objectId.length > 0
+      (obj as any).objectId.length > 0,
   );
 }
 
 function flattenLogTree(
   nodes: LogNode[],
   parentId: string | null = null,
-  indent = 0
+  indent = 0,
 ): FlatLogLine[] {
   const out: FlatLogLine[] = [];
   for (const n of nodes) {
@@ -361,10 +357,10 @@ function flattenLogTree(
           (Array.isArray(n.children) && n.children.length > 0) ||
           Boolean(n.loading)
         : n.kind === "arg"
-        ? isObjectExpandable(n.object)
-        : n.kind === "prop"
-        ? isObjectExpandable(n.value)
-        : false;
+          ? isObjectExpandable(n.object)
+          : n.kind === "prop"
+            ? isObjectExpandable(n.value)
+            : false;
 
     const expanded = Boolean(n.expanded);
 
@@ -405,7 +401,7 @@ function flattenLogTree(
 function updateNodeById(
   nodes: LogNode[],
   id: string,
-  updater: (n: LogNode) => LogNode
+  updater: (n: LogNode) => LogNode,
 ): LogNode[] {
   let changed = false;
   const next = nodes.map((n) => {
@@ -566,7 +562,7 @@ function App({ opts }: AppProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [attachedIndex, setAttachedIndex] = useState<number | null>(null);
   const [status, setStatus] = useState<string>(
-    `connecting to ${opts.host}:${opts.port}...`
+    `connecting to ${opts.host}:${opts.port}...`,
   );
 
   const [focus, setFocus] = useState<Focus>("targets");
@@ -576,14 +572,14 @@ function App({ opts }: AppProps) {
   const [followTail, setFollowTail] = useState(true);
   const [logScrollTop, setLogScrollTop] = useState(0);
   const [selectedLogNodeId, setSelectedLogNodeId] = useState<string | null>(
-    null
+    null,
   );
 
   const [netTree, setNetTree] = useState<LogNode[]>([]);
   const [followNetTail, setFollowNetTail] = useState(true);
   const [netScrollTop, setNetScrollTop] = useState(0);
   const [selectedNetNodeId, setSelectedNetNodeId] = useState<string | null>(
-    null
+    null,
   );
 
   const [netSearchOpen, setNetSearchOpen] = useState(false);
@@ -614,7 +610,7 @@ function App({ opts }: AppProps) {
 
   useEffect(() => {
     attachedTargetIdRef.current =
-      attachedIndex == null ? null : targets[attachedIndex]?.id ?? null;
+      attachedIndex == null ? null : (targets[attachedIndex]?.id ?? null);
   }, [targets, attachedIndex]);
 
   const mainHeight = Math.max(1, safeRows - HEADER_HEIGHT - FOOTER_HEIGHT);
@@ -623,7 +619,7 @@ function App({ opts }: AppProps) {
   const visibleLogLines = Math.max(3, panelInnerHeight - 1 - rightReserved); // subtract title line + input
   const visibleTargetItems = Math.max(
     1,
-    Math.floor((panelInnerHeight - 1) / TARGET_LINES_PER_ITEM)
+    Math.floor((panelInnerHeight - 1) / TARGET_LINES_PER_ITEM),
   );
 
   const filteredLogTree = useMemo(() => {
@@ -634,14 +630,20 @@ function App({ opts }: AppProps) {
       const hay = `${n.label ?? ""} ${n.text ?? ""}`.toLowerCase();
       // Also check args preview for console entries
       if (n.kind === "entry" && Array.isArray(n.args)) {
-        const argsPreview = n.args.map(formatRemoteObject).join(" ").toLowerCase();
+        const argsPreview = n.args
+          .map(formatRemoteObject)
+          .join(" ")
+          .toLowerCase();
         if (argsPreview.includes(q)) return true;
       }
       return hay.includes(q);
     });
   }, [logTree, logSearchQuery]);
 
-  const flatLogs = useMemo(() => flattenLogTree(filteredLogTree), [filteredLogTree]);
+  const flatLogs = useMemo(
+    () => flattenLogTree(filteredLogTree),
+    [filteredLogTree],
+  );
 
   const filteredNetTree = useMemo(() => {
     const q = netSearchQuery.trim().toLowerCase();
@@ -655,7 +657,7 @@ function App({ opts }: AppProps) {
 
   const flatNet = useMemo(
     () => flattenLogTree(filteredNetTree),
-    [filteredNetTree]
+    [filteredNetTree],
   );
 
   const selectedLogIndex = useMemo(() => {
@@ -691,7 +693,7 @@ function App({ opts }: AppProps) {
     }
 
     setLogScrollTop((top) =>
-      clamp(top, 0, Math.max(0, flatLogs.length - visibleLogLines))
+      clamp(top, 0, Math.max(0, flatLogs.length - visibleLogLines)),
     );
   }, [flatLogs.length, followTail, visibleLogLines]);
 
@@ -713,7 +715,7 @@ function App({ opts }: AppProps) {
     }
 
     setNetScrollTop((top) =>
-      clamp(top, 0, Math.max(0, flatNet.length - visibleLogLines))
+      clamp(top, 0, Math.max(0, flatNet.length - visibleLogLines)),
     );
   }, [flatNet.length, followNetTail, visibleLogLines]);
 
@@ -765,7 +767,7 @@ function App({ opts }: AppProps) {
           id: newNodeId(),
           kind: "text" as const,
           text: t,
-        }))
+        })),
       );
       if (next.length > LOG_MAX_LINES)
         return next.slice(next.length - LOG_MAX_LINES);
@@ -776,7 +778,7 @@ function App({ opts }: AppProps) {
   const appendEntryLog = (
     label: string,
     args: RemoteObject[] = [],
-    timestamp?: number
+    timestamp?: number,
   ) => {
     setLogTree((prev) => {
       const next = prev.concat([
@@ -853,8 +855,8 @@ function App({ opts }: AppProps) {
     const tail = r?.errorText
       ? ` ✖ ${r.errorText}`
       : status != null
-      ? ` ${status}`
-      : "";
+        ? ` ${status}`
+        : "";
     return `[${time}] ${method} ${url}${tail}`.trimEnd();
   };
 
@@ -1028,13 +1030,13 @@ function App({ opts }: AppProps) {
   };
 
   const loadResponseBody = async (
-    rid: string
+    rid: string,
   ): Promise<{ body: string; base64Encoded: boolean }> => {
     const c = clientRef.current as any;
     const Network = c?.Network;
     if (!Network?.getResponseBody)
       throw new Error(
-        "Network.getResponseBody is not available (not attached?)"
+        "Network.getResponseBody is not available (not attached?)",
       );
     const res = await Network.getResponseBody({ requestId: rid });
     return {
@@ -1074,7 +1076,7 @@ function App({ opts }: AppProps) {
             },
           ],
         };
-      })
+      }),
     );
   };
 
@@ -1084,7 +1086,7 @@ function App({ opts }: AppProps) {
         ...n,
         loading: false,
         children,
-      }))
+      })),
     );
   };
 
@@ -1117,7 +1119,7 @@ function App({ opts }: AppProps) {
     items.sort(
       (a, b) =>
         Number(b.enumerable) - Number(a.enumerable) ||
-        a.name.localeCompare(b.name)
+        a.name.localeCompare(b.name),
     );
 
     const LIMIT = 80;
@@ -1129,7 +1131,7 @@ function App({ opts }: AppProps) {
         name: it.name,
         value: it.value,
         expanded: false,
-      })
+      }),
     );
 
     if (items.length > LIMIT) {
@@ -1156,10 +1158,10 @@ function App({ opts }: AppProps) {
       node.kind === "entry"
         ? Array.isArray(node.args) && node.args.length > 0
         : node.kind === "arg"
-        ? isObjectExpandable(node.object)
-        : node.kind === "prop"
-        ? isObjectExpandable(node.value)
-        : false;
+          ? isObjectExpandable(node.object)
+          : node.kind === "prop"
+            ? isObjectExpandable(node.value)
+            : false;
 
     if (!expandable) return;
 
@@ -1202,7 +1204,7 @@ function App({ opts }: AppProps) {
             expanded: nextExpanded,
             children: updatedFirst ? [updatedFirst, ...rest] : children,
           };
-        })
+        }),
       );
 
       if (autoExpandArg0 && arg0 && arg0Id) {
@@ -1227,7 +1229,7 @@ function App({ opts }: AppProps) {
 
     // arg/prop expansion requires fetching properties
     setLogTree((prev) =>
-      updateNodeById(prev, nodeId, (n) => ({ ...n, expanded: nextExpanded }))
+      updateNodeById(prev, nodeId, (n) => ({ ...n, expanded: nextExpanded })),
     );
 
     if (!nextExpanded) return;
@@ -1271,7 +1273,7 @@ function App({ opts }: AppProps) {
     const current = findNodeById(logTree, currentId);
     if (current?.expanded) {
       setLogTree((prev) =>
-        updateNodeById(prev, currentId, (n) => ({ ...n, expanded: false }))
+        updateNodeById(prev, currentId, (n) => ({ ...n, expanded: false })),
       );
       return;
     }
@@ -1287,7 +1289,7 @@ function App({ opts }: AppProps) {
         const pid = parentId;
         setSelectedLogNodeId(pid);
         setLogTree((prev) =>
-          updateNodeById(prev, pid, (n) => ({ ...n, expanded: false }))
+          updateNodeById(prev, pid, (n) => ({ ...n, expanded: false })),
         );
         return;
       }
@@ -1323,7 +1325,7 @@ function App({ opts }: AppProps) {
           const already = Array.isArray(n.children) && n.children.length > 0;
           const children = already ? n.children : buildNetChildren(rid);
           return { ...n, expanded: nextExpanded, children };
-        })
+        }),
       );
       return;
     }
@@ -1332,7 +1334,7 @@ function App({ opts }: AppProps) {
     if (node.net?.role === "body" && node.net?.which === "request") {
       const rid = node.net.requestId;
       setNetTree((prev) =>
-        updateNodeById(prev, nodeId, (n) => ({ ...n, expanded: nextExpanded }))
+        updateNodeById(prev, nodeId, (n) => ({ ...n, expanded: nextExpanded })),
       );
       if (!nextExpanded) return;
 
@@ -1357,7 +1359,7 @@ function App({ opts }: AppProps) {
           });
         }
         setNetTree((prev) =>
-          updateNodeById(prev, nodeId, (n) => ({ ...n, children }))
+          updateNodeById(prev, nodeId, (n) => ({ ...n, children })),
         );
         return;
       }
@@ -1368,7 +1370,7 @@ function App({ opts }: AppProps) {
     if (node.net?.role === "body") {
       const rid = node.net.requestId;
       setNetTree((prev) =>
-        updateNodeById(prev, nodeId, (n) => ({ ...n, expanded: nextExpanded }))
+        updateNodeById(prev, nodeId, (n) => ({ ...n, expanded: nextExpanded })),
       );
       if (!nextExpanded) return;
 
@@ -1377,7 +1379,7 @@ function App({ opts }: AppProps) {
         const rb = record.responseBody;
         const { lines, typeHint } = formatResponseBody(
           rb.body,
-          rb.base64Encoded
+          rb.base64Encoded,
         );
         const LIMIT = 300;
         const sliced = lines.slice(0, LIMIT);
@@ -1397,7 +1399,7 @@ function App({ opts }: AppProps) {
           });
         }
         setNetTree((prev) =>
-          updateNodeById(prev, nodeId, (n) => ({ ...n, children }))
+          updateNodeById(prev, nodeId, (n) => ({ ...n, children })),
         );
         return;
       }
@@ -1414,14 +1416,14 @@ function App({ opts }: AppProps) {
               text: "(loading response body...)",
             },
           ],
-        }))
+        })),
       );
       try {
         const body = await loadResponseBody(rid);
         upsertNet(rid, { responseBody: body });
         const { lines, typeHint } = formatResponseBody(
           body.body,
-          body.base64Encoded
+          body.base64Encoded,
         );
         const LIMIT = 300;
         const sliced = lines.slice(0, LIMIT);
@@ -1445,7 +1447,7 @@ function App({ opts }: AppProps) {
             ...n,
             loading: false,
             children,
-          }))
+          })),
         );
       } catch (err) {
         setNetTree((prev) =>
@@ -1459,7 +1461,7 @@ function App({ opts }: AppProps) {
                 text: `[body] ! ${String(err)}`,
               },
             ],
-          }))
+          })),
         );
       } finally {
         isExpandingRef.current = false;
@@ -1469,7 +1471,7 @@ function App({ opts }: AppProps) {
 
     // default: just toggle
     setNetTree((prev) =>
-      updateNodeById(prev, nodeId, (n) => ({ ...n, expanded: nextExpanded }))
+      updateNodeById(prev, nodeId, (n) => ({ ...n, expanded: nextExpanded })),
     );
   };
 
@@ -1481,7 +1483,7 @@ function App({ opts }: AppProps) {
     const current = findNodeById(netTree, currentId);
     if (current?.expanded) {
       setNetTree((prev) =>
-        updateNodeById(prev, currentId, (n) => ({ ...n, expanded: false }))
+        updateNodeById(prev, currentId, (n) => ({ ...n, expanded: false })),
       );
       return;
     }
@@ -1495,7 +1497,7 @@ function App({ opts }: AppProps) {
         const pid = parentId;
         setSelectedNetNodeId(pid);
         setNetTree((prev) =>
-          updateNodeById(prev, pid, (n) => ({ ...n, expanded: false }))
+          updateNodeById(prev, pid, (n) => ({ ...n, expanded: false })),
         );
         return;
       }
@@ -1531,8 +1533,8 @@ function App({ opts }: AppProps) {
         selectedById >= 0
           ? selectedById
           : typeof preferIndex === "number"
-          ? preferIndex
-          : selectedIndex;
+            ? preferIndex
+            : selectedIndex;
       const idx = clamp(idxRaw, 0, Math.max(0, t.length - 1));
       setSelectedIndex(idx);
 
@@ -1551,7 +1553,7 @@ function App({ opts }: AppProps) {
           const idx = clamp(
             typeof preferIndex === "number" ? preferIndex : selectedIndex,
             0,
-            Math.max(0, t.length - 1)
+            Math.max(0, t.length - 1),
           );
           setSelectedIndex(idx);
           appendTextLog("[hint] localhost failed; switched host to 127.0.0.1");
@@ -1577,7 +1579,7 @@ function App({ opts }: AppProps) {
             '  open -na "Google Chrome" --args --remote-debugging-port=9222 --user-data-dir=/tmp/chrome-cdp',
             "[hint] Verify endpoint:",
             `  curl http://${host}:${port}/json/list`,
-          ].join("\n")
+          ].join("\n"),
         );
       }
     }
@@ -1621,7 +1623,7 @@ function App({ opts }: AppProps) {
           appendEntryLog(
             `eval!`,
             [res.exceptionDetails.exception as RemoteObject],
-            Date.now()
+            Date.now(),
           );
         }
         return;
@@ -1699,7 +1701,7 @@ function App({ opts }: AppProps) {
         appendEntryLog(
           `[${time}] exception ${text}`.trimEnd(),
           args,
-          p?.timestamp
+          p?.timestamp,
         );
       });
 
@@ -1720,7 +1722,7 @@ function App({ opts }: AppProps) {
         appendEntryLog(
           `[${time}] console.${level} ${text}`.trimEnd(),
           params,
-          msg?.timestamp
+          msg?.timestamp,
         );
       });
 
@@ -1822,7 +1824,7 @@ function App({ opts }: AppProps) {
           const time = formatTime(p?.timestamp ?? Date.now());
           const payload = String(p?.response?.payloadData ?? "");
           appendTextLog(
-            `[${time}] ws.sent ${truncate(payload, 200)}`.trimEnd()
+            `[${time}] ws.sent ${truncate(payload, 200)}`.trimEnd(),
           );
         });
 
@@ -1830,7 +1832,7 @@ function App({ opts }: AppProps) {
           const time = formatTime(p?.timestamp ?? Date.now());
           const payload = String(p?.response?.payloadData ?? "");
           appendTextLog(
-            `[${time}] ws.recv ${truncate(payload, 200)}`.trimEnd()
+            `[${time}] ws.recv ${truncate(payload, 200)}`.trimEnd(),
           );
         });
       }
@@ -1970,13 +1972,13 @@ function App({ opts }: AppProps) {
     if (focus === "targets") {
       if (key.upArrow || input === "k") {
         setSelectedIndex((i) =>
-          clamp(i - 1, 0, Math.max(0, targets.length - 1))
+          clamp(i - 1, 0, Math.max(0, targets.length - 1)),
         );
         return;
       }
       if (key.downArrow || input === "j") {
         setSelectedIndex((i) =>
-          clamp(i + 1, 0, Math.max(0, targets.length - 1))
+          clamp(i + 1, 0, Math.max(0, targets.length - 1)),
         );
         return;
       }
@@ -2036,7 +2038,7 @@ function App({ opts }: AppProps) {
         const nextIdx = clamp(
           activeIndex - visibleLogLines,
           0,
-          activeFlat.length - 1
+          activeFlat.length - 1,
         );
         setActiveSelected(activeFlat[nextIdx]?.nodeId ?? null);
         return;
@@ -2046,7 +2048,7 @@ function App({ opts }: AppProps) {
         const nextIdx = clamp(
           activeIndex + visibleLogLines,
           0,
-          activeFlat.length - 1
+          activeFlat.length - 1,
         );
         setActiveSelected(activeFlat[nextIdx]?.nodeId ?? null);
         if (nextIdx === activeFlat.length - 1) setActiveFollow(true);
@@ -2140,7 +2142,7 @@ function App({ opts }: AppProps) {
 
     if (input === "?") {
       appendTextLog(
-        "Keys: tab focus | q/esc quit | r refresh | targets: ↑↓/j k + enter attach | right: l logs / n network / [ ] switch | j/k select | z toggle | Z collapse | y copy | / filter | : eval | d detach | p ping | c clear(logs/network) | f follow"
+        "Keys: tab focus | q/esc quit | r refresh | targets: ↑↓/j k + enter attach | right: l logs / n network / [ ] switch | j/k select | z toggle | Z collapse | y copy | / filter | : eval | d detach | p ping | c clear(logs/network) | f follow",
       );
     }
   });
@@ -2181,7 +2183,7 @@ function App({ opts }: AppProps) {
       }>;
     const slice = targets.slice(
       targetScrollTop,
-      targetScrollTop + visibleTargetItems
+      targetScrollTop + visibleTargetItems,
     );
     return slice.map((t, offset) => {
       const idx = targetScrollTop + offset;
@@ -2203,7 +2205,10 @@ function App({ opts }: AppProps) {
       const maxWidth = Math.max(10, Math.floor(columns * 0.33) - 6);
       return {
         key: t.id,
-        lines: [truncate(line1, maxWidth), truncate(line2, maxWidth)] as [string, string],
+        lines: [truncate(line1, maxWidth), truncate(line2, maxWidth)] as [
+          string,
+          string,
+        ],
         selected,
         attached,
         type,
@@ -2232,7 +2237,7 @@ function App({ opts }: AppProps) {
     const start = clamp(
       activeScrollTop,
       0,
-      Math.max(0, activeFlat.length - visibleLogLines)
+      Math.max(0, activeFlat.length - visibleLogLines),
     );
     const endExclusive = clamp(start + visibleLogLines, 0, activeFlat.length);
     return {
@@ -2244,11 +2249,7 @@ function App({ opts }: AppProps) {
 
   // Show logo screen
   if (showLogo) {
-    return (
-      <LogoScreen
-        onDismiss={() => setShowLogo(false)}
-      />
-    );
+    return <LogoScreen onDismiss={() => setShowLogo(false)} />;
   }
 
   // Colorful header with Nerd Font icons
@@ -2267,10 +2268,14 @@ function App({ opts }: AppProps) {
           {connectionStatus ? " connected" : " waiting"}
         </Text>
         <Text dimColor> │ </Text>
-        <Text dimColor>{host}:{port}</Text>
+        <Text dimColor>
+          {host}:{port}
+        </Text>
         <Text dimColor> │ </Text>
         <Text color="cyan">{ICONS.list} </Text>
-        <Text color="cyanBright" bold>{targets.length}</Text>
+        <Text color="cyanBright" bold>
+          {targets.length}
+        </Text>
         {attachedTitle ? (
           <>
             <Text dimColor> │ </Text>
@@ -2322,7 +2327,7 @@ function App({ opts }: AppProps) {
                   {ICONS.bullet} {targetScrollTop + 1}-
                   {Math.min(
                     targetScrollTop + visibleTargetItems,
-                    targets.length
+                    targets.length,
                   )}
                   /{targets.length}
                 </Text>
@@ -2352,16 +2357,18 @@ function App({ opts }: AppProps) {
             >
               {ICONS.network} Network
             </Text>
-            <Text dimColor>
-              {"  "}
-            </Text>
+            <Text dimColor>{"  "}</Text>
             <Text color="gray">
               ({viewport.start + 1}-{viewport.endExclusive}/{activeFlat.length})
             </Text>
             <Text color={activeFollow ? "green" : "yellow"}>
-              {activeFollow ? ` ${ICONS.connected} follow` : ` ${ICONS.disconnected} paused`}
+              {activeFollow
+                ? ` ${ICONS.connected} follow`
+                : ` ${ICONS.disconnected} paused`}
             </Text>
-            {focus === "right" ? <Text color="greenBright"> {ICONS.star}</Text> : null}
+            {focus === "right" ? (
+              <Text color="greenBright"> {ICONS.star}</Text>
+            ) : null}
           </Text>
           <Box flexDirection="column">
             {viewport.lines.map((line, i) => {
@@ -2370,7 +2377,11 @@ function App({ opts }: AppProps) {
                 focus === "right" &&
                 activeFlat[idx]?.nodeId === activeSelectedId;
 
-              const icon = line.expandable ? (line.expanded ? ICONS.expand : ICONS.collapse) : " ";
+              const icon = line.expandable
+                ? line.expanded
+                  ? ICONS.expand
+                  : ICONS.collapse
+                : " ";
               const prefix = `${" ".repeat(line.indent * 2)}${icon} `;
               const rendered = `${prefix}${line.text}`;
 
@@ -2384,7 +2395,7 @@ function App({ opts }: AppProps) {
                 >
                   {truncate(
                     rendered,
-                    Math.max(10, Math.floor(columns * 0.67) - 6)
+                    Math.max(10, Math.floor(columns * 0.67) - 6),
                   )}
                 </Text>
               );
@@ -2417,7 +2428,10 @@ function App({ opts }: AppProps) {
             </Box>
           ) : (
             <Text dimColor>
-              <Text color="yellow">l</Text> logs <Text color="yellow">n</Text> network <Text color="yellow">j/k</Text> select <Text color="yellow">z</Text> expand <Text color="yellow">/</Text> filter <Text color="yellow">:</Text> eval
+              <Text color="yellow">l</Text> logs <Text color="yellow">n</Text>{" "}
+              network <Text color="yellow">j/k</Text> select{" "}
+              <Text color="yellow">z</Text> expand <Text color="yellow">/</Text>{" "}
+              filter <Text color="yellow">:</Text> eval
             </Text>
           )}
         </Box>
@@ -2427,21 +2441,43 @@ function App({ opts }: AppProps) {
           {" "}
           <Text color={connectionStatus ? "green" : "yellow"}>
             {connectionStatus ? ICONS.connected : ICONS.disconnected}
-          </Text>
-          {" "}
+          </Text>{" "}
         </Text>
         <Text backgroundColor="gray" color="black">
           {truncate(status, Math.max(10, columns - 60))}
         </Text>
-        <Text backgroundColor="gray" color="black"> │ </Text>
-        <Text backgroundColor="gray" color="blue" bold>tab</Text>
-        <Text backgroundColor="gray" color="black"> focus </Text>
-        <Text backgroundColor="gray" color="blue" bold>r</Text>
-        <Text backgroundColor="gray" color="black"> refresh </Text>
-        <Text backgroundColor="gray" color="blue" bold>c</Text>
-        <Text backgroundColor="gray" color="black"> clear </Text>
-        <Text backgroundColor="gray" color="blue" bold>q</Text>
-        <Text backgroundColor="gray" color="black"> quit </Text>
+        <Text backgroundColor="gray" color="black">
+          {" "}
+          │{" "}
+        </Text>
+        <Text backgroundColor="gray" color="blue" bold>
+          tab
+        </Text>
+        <Text backgroundColor="gray" color="black">
+          {" "}
+          focus{" "}
+        </Text>
+        <Text backgroundColor="gray" color="blue" bold>
+          r
+        </Text>
+        <Text backgroundColor="gray" color="black">
+          {" "}
+          refresh{" "}
+        </Text>
+        <Text backgroundColor="gray" color="blue" bold>
+          c
+        </Text>
+        <Text backgroundColor="gray" color="black">
+          {" "}
+          clear{" "}
+        </Text>
+        <Text backgroundColor="gray" color="blue" bold>
+          q
+        </Text>
+        <Text backgroundColor="gray" color="black">
+          {" "}
+          quit{" "}
+        </Text>
         <Text backgroundColor="gray" color="black">
           {" ".repeat(Math.max(0, columns - 80))}
         </Text>
@@ -2460,7 +2496,7 @@ export async function runTui(opts: CliOptions): Promise<void> {
         pollMs: opts.pollMs,
         targetQuery: opts.targetQuery,
       }}
-    />
+    />,
   );
 
   await instance.waitUntilExit();
